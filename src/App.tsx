@@ -35,25 +35,26 @@ function App() {
         <section className="flex flex-col items-center gap-8">
           <h2 className="flex items-center justify-center text-white text-2xl">Core Concepts</h2>
           <ul className="flex items-center justify-center bg-slate-800 px-6 py-6 gap-2 rounded-lg">
-            <CoreConcept 
-            title={CORE_CONCEPTS[0].title} 
-            description={CORE_CONCEPTS[0].description}
-            image={CORE_CONCEPTS[0].image} />
-            <CoreConcept
-            {...CORE_CONCEPTS[1]}  />
-            <CoreConcept
-            {...CORE_CONCEPTS[2]}  />
-            <CoreConcept
-            {...CORE_CONCEPTS[3]}  />
+            {CORE_CONCEPTS.map((conceptItem) => (
+              <CoreConcept {...conceptItem}  />
+            ))}
           </ul>
         </section>
         <section className="flex flex-col itmes-center justify-center gap-6 ">
           <h2 className="text-center text-2xl text-white">Example</h2>
           <menu className="flex items-center justify-center gap-2">
-            <TabButton onSelect={() => handleSelect('components')} >components</TabButton>
-            <TabButton onSelect={() => handleSelect('jsx')} >JSX</TabButton>
-            <TabButton onSelect={() => handleSelect('props')} >Props</TabButton>
-            <TabButton onSelect={() => handleSelect('state')} >State</TabButton>
+            <TabButton 
+            isSelected={ selectedButton === 'components' }
+            onSelect={() => handleSelect('components')} >components</TabButton>
+            <TabButton 
+            isSelected={ selectedButton === 'jsx' }
+            onSelect={() => handleSelect('jsx')} >JSX</TabButton>
+            <TabButton 
+            isSelected={ selectedButton === 'props' }
+            onSelect={() => handleSelect('props')} >Props</TabButton>
+            <TabButton 
+            isSelected={ selectedButton === 'state' }
+            onSelect={() => handleSelect('state')} >State</TabButton>
           </menu>
           <div>{tabButton}</div>
         </section>
